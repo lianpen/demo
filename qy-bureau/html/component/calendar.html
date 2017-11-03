@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="kiben" content="no-cache">
+	<title>模态框</title>
+	<link rel="stylesheet" href="../../lib/bootstrap-qy-3.3.7/css/bootstrap.css" />
+	<link rel="stylesheet" href="../../lib/bootstrap-qy-3.3.7/css/bootstrap-theme.css" />
+	<link rel="stylesheet" href="../../lib/bootstrap-qy-3.3.7/css/iconfont.css" />
+	<link rel="stylesheet" href="../../css/pc/qy.css" />
+	<link rel="stylesheet" href="../../svg/icomoon/style.css" />
+	
+	<script src="../../lib/jquery-3.2.1.js"></script>
+	<script src="../../lib/underscore.js"></script>
+	<script src="../../lib/bootstrap-3.3.7/js/bootstrap.js"></script>
+	<script src="../../js/pc/common.js"></script>
+	<script src="../../js/pc/plugin.js"></script>
+</head>
+
+<body>
+	<div class="calendar calendar-0" style='margin: 64px;'>
+		<input readonly="" placeholder="请选择日期" class="calendar-picker-input form-control">
+		<span class="calendar-picker-icon"></span>
+	</div>		
+	<div class="calendar calendar-1" style='margin: 64px;'>
+		<input readonly="" placeholder="请选择日期" class="calendar-picker-input form-control">
+		<span class="calendar-picker-icon"></span>
+	</div>		
+	<div class="calendar calendar-2" style='margin: 64px;'>
+		<input readonly="" placeholder="请选择日期" class="calendar-picker-input form-control">
+		<span class="calendar-picker-icon"></span>
+	</div>		
+	<div class="calendar calendar-3" style='margin: 64px;'>
+		<input readonly="" placeholder="请选择日期" class="calendar-picker-input form-control">
+		<span class="calendar-picker-icon"></span>
+	</div>		
+	<script>
+		$('.calendar-0').datePicker({
+			range: 'month',
+			onChange: function(value) {
+				console.log(value);
+			}
+		});
+		$('.calendar-1').datePicker({
+			range: 'year',
+			onChange: function(value) {
+				console.log(value);
+			}
+		});
+		$('.calendar-2').datePicker({
+			range: 'month',
+			value: 7,
+			onChange: function(value) {
+				console.log(value);
+			}
+		});
+		$('.calendar-3').datePicker({
+			range: 'year',
+			value: '5,11',
+			onChange: function(value) {
+				console.log(value);
+			}
+		});
+	</script>
+</body>
+</html>
