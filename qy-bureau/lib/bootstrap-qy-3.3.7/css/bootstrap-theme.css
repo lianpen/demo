@@ -21,7 +21,7 @@ h1,h2,h3,h4,h5,h6,p,ul,ol {
         transform: scaleY(.8)
     }
 
-    to {
+    100% {
         opacity: 1;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -39,7 +39,7 @@ h1,h2,h3,h4,h5,h6,p,ul,ol {
         transform: scaleY(1)
     }
 
-    to {
+    100% {
         opacity: 0;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -48,63 +48,16 @@ h1,h2,h3,h4,h5,h6,p,ul,ol {
     }
 }
 
-@-webkit-keyframes antSlideUpIn {
-    0% {
-        opacity: 0;
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transform: scaleY(.8);
-        transform: scaleY(.8)
-    }
-
-    to {
-        opacity: 1;
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1)
-    }
-}
-
-@-webkit-keyframes antSlideUpOut {
-    0% {
-        opacity: 1;
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1)
-    }
-
-    to {
-        opacity: 0;
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-        -webkit-transform: scaleY(.8);
-        transform: scaleY(.8)
-    }
-}
-.slide-up-enter,.slide-up-leave {
-    -webkit-animation-duration: .2s;
-    animation-duration: .2s;
-    -webkit-animation-fill-mode: both;
+.slide-up-enter {
+    -webkit-animation: antSlideUpIn .2s;
+    animation: antSlideUpIn .2s;
     animation-fill-mode: both;
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused
 }
 
-.slide-up-enter.slide-up-enter-active {
-    -webkit-animation-name: antSlideUpIn;
-    animation-name: antSlideUpIn;
-    -webkit-animation-play-state: running;
-    animation-play-state: running
-}
-
-.slide-up-leave.slide-up-leave-active {
-    -webkit-animation-name: antSlideUpOut;
-    animation-name: antSlideUpOut;
-    -webkit-animation-play-state: running;
-    animation-play-state: running;
-    pointer-events: none
+.slide-up-leave{
+    -webkit-animation: antSlideUpOut .2s;
+    animation: antSlideUpOut .2s;
+    animation-fill-mode: both;
 }
 @-webkit-keyframes antZoomIn {
     0% {
@@ -452,18 +405,15 @@ input.form-control:focus, input.form-control:hover, textarea.form-control:focus,
  .dropdown button i {
     color: #979797;
     font-size: 12px;
-    transform: scale(.8) rotateX(0deg);
-    transition: transform .6s;
+    transform: scale(.75) rotateZ(0deg);
+    transition: transform .2s;
     position: absolute;
     right: 7px;
     top: 6px;
 }
  .dropdown.open button i {
-    transform: scale(.8) rotateX(180deg);
+    transform: scale(.75) rotateZ(180deg);
 }
- .dropdown.open i, .dropdown button:hover i, .dropdown button:active i {
-    color: #108ee9;
-} 
  .open > .dropdown-toggle.btn-default:hover, 
  .open > .dropdown-toggle.btn-default:focus {
 	color: #108ee9;

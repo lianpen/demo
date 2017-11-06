@@ -841,7 +841,8 @@
 			this.$dom.data('value', $firstLi.data('value'));
 		}
 		this.state = {
-			open: false
+			open: false,
+			animationUuid: 0
 		}
 		this.addEvents();
 	}
@@ -875,9 +876,13 @@
 			top: this.$dom.offset().top + 32
 		});
 		this.$necromancy.show();
-		this.$necromancy.addClass('slide-up-enter slide-up-enter-active');
+		this.$necromancy.removeClass('slide-up-leave');
+		this.$necromancy.addClass('slide-up-enter');
+		this.state.animationUuid += 1;
+		var animationUuid = this.state.animationUuid;
 		setTimeout(function() {
-			context.$necromancy.removeClass('slide-up-enter slide-up-enter-active');
+			if (context.state.animationUuid != animationUuid) return;
+			context.$necromancy.removeClass('slide-up-enter slide-up-leave');
 		}, 200);
 	}
 	
@@ -885,10 +890,14 @@
 		var context = this;
 		this.state.open = false;
 		this.$dom.removeClass('open');
-		this.$necromancy.addClass('slide-up-leave slide-up-leave-active');
+		this.$necromancy.removeClass('slide-up-enter');
+		this.$necromancy.addClass('slide-up-leave');
+		this.state.animationUuid += 1;
+		var animationUuid = this.state.animationUuid;
 		setTimeout(function() {
-			context.$necromancy.removeClass('slide-up-leave slide-up-enter-leave');
+			if (context.state.animationUuid != animationUuid) return;
 			context.$necromancy.hide();
+			context.$necromancy.removeClass('slide-up-leave slide-up-leave');
 		}, 200);
 	}
 	
