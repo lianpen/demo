@@ -527,12 +527,12 @@ input.form-control:focus, input.form-control:hover, textarea.form-control:focus,
 
 .checkbox label {
 	padding-left: 0;
+	display: flex;
+	align-items: center;
 }
 
 .checkbox i {
     position: relative;
-    top: 2px;
-    left: 0;
     display: inline-block;
     width: 14px;
     height: 14px;

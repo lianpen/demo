@@ -841,7 +841,7 @@
 		this.$necromancy.addClass('slide-up-leave slide-up-leave-active');
 		setTimeout(function() {
 			context.$necromancy.removeClass('slide-up-leave slide-up-enter-leave');
-			context.$necromancy.hide.call(context);
+			context.$necromancy.hide();
 		}, 200);
 	}
 	
