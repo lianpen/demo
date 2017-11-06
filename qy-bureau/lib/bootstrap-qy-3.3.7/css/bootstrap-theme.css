@@ -582,6 +582,92 @@ input.form-control:focus, input.form-control:hover, textarea.form-control:focus,
     -webkit-transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
     transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
 }
+
+/**
+ * radio 单选框
+ */
+.radio {
+	display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 8px;	
+}
+
+.radio > span {
+    outline: none;
+    line-height: 1;
+    vertical-align: text-bottom;
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;	
+}
+
+.radio input[type=radio] {
+	line-height: normal;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+	margin: 0;
+	width: 100%;
+}
+.radio input[type="radio"]:checked + i {
+	border-color: #108ee9;
+}
+.radio input[type="radio"]:checked + i:after {
+	-webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.radio i {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    -webkit-transition: all .3s;
+    transition: all .3s;	
+}
+
+.radio i:after {
+	content: ' ';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    left: 3px;
+    top: 3px;
+    border-radius: 4px;
+    display: table;
+    border-top: 0;
+    border-left: 0;
+    content: " ";
+    background-color: #108ee9;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all .3s cubic-bezier(.78,.14,.15,.86);
+    transition: all .3s cubic-bezier(.78,.14,.15,.86);	
+}
+.radio:hover i {
+	border-color: #108ee9;
+}
+.radio label {
+    padding-left: 8px;
+    padding-right: 8px;	
+}
  
 /** 鍒嗛〉缁勪欢
 	pagination
