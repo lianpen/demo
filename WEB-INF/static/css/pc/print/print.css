@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.dropdown {
+	width: 130px;
+}
+.text-red {
+	color: #ff4141;
+}
+.qy-list-info .right a {
+    margin-left: 60px;
+    color: #666;
+}
+.qy-list-info .right a:hover {
+	color: #3c8fe8;
+}

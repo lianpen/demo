@@ -1,0 +1,116 @@
+@CHARSET "UTF-8";
+.qy-list-info .right a {
+    margin-left: 60px;
+    color: #666;
+}
+.qy-list-info .right a:hover,
+.qy-list-info .right a:first-child {
+	color: #3c8fe8;
+}
+.qy-list-info {
+	border-bottom: 1px solid #ececec;
+}
+.qy-list-search {
+	border-top: 1px solid #ececec;
+	margin-top: 40px;
+}
+.qy-list-notrelate,
+.qy-list-relate,
+.qy-list-search {
+	padding: 0 12px;
+}
+.qy-list-relate-title,
+.qy-list-notrelate-title,
+.qy-list-search-title {
+	font-size: 14px;
+	line-height: 86px;
+}
+.qy-list-relate-body,
+.qy-list-notrelate-body,
+.qy-list-search-body,
+.qy-list-search-result {
+	width: 846px;
+	padding: 0 15px;
+	font-size: 12px;
+	color: #666;
+}
+.qy-list-relate-body .row,
+.qy-list-notrelate-body .row,
+.row .col-md-4:last-child,
+.qy-list-search-result .dropdown .btn {
+	display:-webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+	align-items:center;
+	-webkit-align-items:center;
+	box-align:center;
+	-moz-box-align:center;
+	-webkit-box-align:center;
+}
+.qy-list-notrelate-body .row {
+	background-color: #f5f5f9;
+	padding: 18px 4px;
+}
+.qy-list-relate-body .row {
+	background-color: rgba(60,143,232,0.1);
+	padding: 18px 4px;
+}
+
+.qy-list-notrelate-body .row span,
+.qy-list-relate-body .row span {
+	vertical-align: super;
+	margin-left: 5px;
+}
+.qy-list-notrelate-body .icon-printer,
+.qy-list-relate-body .icon-printer,
+.qy-list-notrelate-body .qyfont-link {
+	font-size: 32px;
+	color: #a1a1a1;
+}
+.qy-list-relate-body .qyfont-link {
+	font-size: 32px;
+	color: #3c8fe8;
+}
+.row + .row {
+	margin-top: 20px;
+}
+.qy-list-relate-body .row a {
+	color: #3c8fe8;
+	margin-left: 30px;
+}
+.qy-list-search-body img {
+	margin: 0 auto;
+}
+.qy-list-search-body p {
+	margin-top: -48px;
+	margin-bottom: 35px;
+}
+.qy-list-search-result .dropdown {
+	width: 174px;
+	height: 72px;
+}
+.qy-list-search-result .dropdown .btn {
+	height: 100%;
+	border-color: #fff;
+}
+.qy-list-search-result .dropdown.open .btn,
+.qy-list-search-result .dropdown:hover .btn {
+	border-color: #d9d9d9;
+}
+.qy-list-search-result .dropdown button i {
+    color: #a1a1a1;
+    font-size: 32px;
+    transform: scale(.75) rotateZ(0deg);
+    transition: transform .2s;
+    position: static;
+}
+.dropdown-menu {
+	margin: 40px 0 0;
+}
+.checkbox i {
+	position: absolute;
+	left: auto;
+	right: 0;
+}

@@ -1,0 +1,151 @@
+/* 二维码打印 */
+.qy-list-info{
+	padding-left:20px;
+}
+.qy-twoDimension-header .go-back{
+	width:70px;
+	height:32px;
+	line-height:32px;
+	border:1px solid #3c8fe8;
+	border-radius:2px;
+	text-align:center;
+	margin-top: 20px;
+}
+.qy-twoDimension-header .go-back a{
+	display:block;
+	color:#3c8fe8;
+	font-size:12px;
+}
+.qy-list-action{
+	height:60px;
+	padding:0 20px;
+}
+.qy-twoDimension-header .right .right-tab {
+	
+	display:inline-block;
+	padding:0 5px;
+	height:14px;
+	border-right:1px solid #ebebeb;
+	text-align:center;
+	line-height:14px;
+	min-width:110px;
+	box-sizing:border-box;
+}
+.qy-twoDimension-header .right .right-tab a{
+	color:#666;
+	font-size:12px;
+}
+.qy-twoDimension-header .right .right-tab:nth-child(4){
+	border-right:none;
+}
+.qy-twoDimension-header .right .right-tab a.tabActive{
+	color:#3c8fe8;
+}
+.print-btn .btns .btn{
+	width:70px;
+	height:32px;
+	line-height:32px;
+	text-align:center;
+	padding:0;
+}
+.qy-list-info{
+	height:72px;
+	line-height:72px;
+}
+.qy-list-action .btns button {
+    margin-right: 10px;
+    border-radius:2px;
+}
+.qy-list-table .print-status{
+	 width: 96%;
+	height:60px;
+	line-height:60px;
+	margin: 10px 20px;
+	margin-right:0px;
+	display: flex;
+}
+.qy-list-table .print-status .checkbox{
+	margin-top:20px;
+	margin-right:20px;
+	padding-left:10px;
+	visibility:hidden;
+}
+.qy-list-table .desc-content{
+	flex:1;
+	margin-left: 10px;
+}
+.qy-list-table .print-status span{
+    display: inline-block;
+}
+.qy-list-table .print-status .outer-title{
+	width:70%;
+
+}
+.outer-title .time-com:nth-child(1){
+	width:200px;
+}
+.qy-list-table .print-status .print-num{
+	border-right:1px solid #fff;
+	border-left:1px solid #fff;
+	width:17%;
+	text-align:center;
+}
+.qy-list-table .print-status .print-status-list{
+	width:9%;
+    text-align:center;
+}
+.print-status .time-com{
+	color:#666;
+	font-size:12px;
+}
+/* 等待中 */
+.qy-list-table .print-status.waiting{
+	background-color:#fff8e7;
+	
+}
+.qy-list-table .waiting .print-status-list{
+	color:#ffb812;
+}
+.qy-list-table .print-status.waiting-border{
+	border:1px solid #ffb812;
+	
+}
+/* 打印中 */
+.qy-list-table .print-status.printing{
+	background-color:#ebf4fd;
+	
+}
+.qy-list-table .printing .print-status-list{
+	color:#3c8fe8;
+}
+.qy-list-table .print-status.printing-border{
+	border:1px solid #3c8fe8;
+	
+}
+/* 打印完成 */
+.qy-list-table .print-status.finished{
+	background-color:#f1f9e5;
+}
+.qy-list-table .print-status.finished-border{
+	border:1px solid #78c803;
+	
+}
+.table{
+	width:96%;
+    overflow: initial;
+	
+}
+.table-box{
+	display:none;
+}
+.table .checkbox{
+	padding-left:10px;
+}
+.table-show{
+	position:relative;
+}
+.table th .checkbox{
+	position:absolute;
+	top: -50px;
+    left: 8px;
+}
