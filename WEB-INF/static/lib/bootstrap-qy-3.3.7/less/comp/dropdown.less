@@ -2,6 +2,12 @@
  .dropdown {
  	width: 108px;
  }
+ .dropdown label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+ }
  .dropdown button {
  	width: 100%;
  	text-align: left;
@@ -13,8 +19,9 @@
     transition: border-color .3s;
     -webkit-transition: border-color .3s;
     &:hover {
-        background: #fff;
         border-color: @brand-primary;
+        background: #fff;
+        color: #bababa;
     }
  }
  .dropdown button i {
@@ -27,8 +34,9 @@
     top: 6px;
 }
  .dropdown.open button {
-    background: #fff;
     border-color: @brand-primary;
+    background: #fff;
+    color: #bababa;
  }
  .dropdown.open button i {
     transform: scale(.75) rotateZ(180deg);
