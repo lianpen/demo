@@ -1,5 +1,232 @@
 
 /**
+ * 消息框
+ */
+(function defineMessage() {
+	var Message = function(param) {
+		this.param = Object.assign({}, Message.DEFAULT_PARAM, param);
+		this.parse();
+		this.$dom = this.createDom();
+		this.render();
+		this.fadein();
+		this.onClickHandler = this.onClick.bind(this);
+		this.$dom.on('click', this.onClickHandler);
+	}
+
+	Message.DEFAULT_PARAM = {
+		title: '',
+		content: '',
+		icon: 'icon icon-checkcircleo',
+		iconColor: '#79c804',
+		iconFontSize: 28,
+		hasButtons: true,
+		buttons: undefined,
+		onOk: window.noop,
+		duration: 3000
+	}
+
+	Message.template = 
+		'<div class="wrapper">' +
+			'<div class="title">' +
+				'<i class="{{icon}}" style="color: {{iconColor}}; font-size: {{iconFontSize}};"></i>' +
+				'{{title}}' +
+			'</div>' +
+			'<div class="content">' +
+				'{{content}}' +
+			'</div>' +
+			'<div class="buttons">' +
+				'<a class="message-btn" data-index="0">{{button0Text}}</a>' +
+				'<a class="message-btn" data-index="1">{{button1Text}}</a>' +
+			'</div>' +
+		'</div>';
+
+	Message.maskAnimationUuid = 0;
+
+	/**
+	 * 一些解析
+	 */
+	Message.prototype.parse = function() {
+		this.hasMask = !!this.param.hasButtons;
+		this.hasTimeout = !this.param.hasButtons;
+		parseButtons.call(this);
+		function parseButtons() {
+			if (!this.param.buttons || !this.param.buttons.length) {
+				this.param.buttons = [{
+					text: '确认',
+					onClick: this.param.onOk || window.noop
+				}, {
+					text: '取消',
+					onClick: window.noop
+				}]
+			}
+			if (this.param.buttons.length == 1) {
+				this.param.buttons.push({
+					text: '取消',
+					onClick: window.noop
+				})
+			}
+			if (this.param.buttons.length > 2) {
+				this.param.buttons.length = 2;
+			}
+			this.param.buttons.forEach(function(button) {
+				if (!button.onClick) button.onClick = window.noop;
+			})
+		}
+	}
+
+	/**
+	 * 创建dom 
+	 */
+	Message.prototype.createDom = function() {
+		var $dom = $(document.createElement('div'));
+		$dom.addClass('comp-message');
+		return $dom;
+	}
+
+	/**
+	 * 渲染
+	 */
+	Message.prototype.render = function() {
+		var obj = Object.assign({}, this.param);
+		obj.button0Text = obj.buttons[0].text;
+		obj.button1Text = obj.buttons[1].text;
+		var html = _.template(Message.template)(obj);
+		this.$dom.html(html);
+		if (!obj.content) this.$dom.addClass('noContent');
+		if (!obj.hasButtons) this.$dom.addClass('noButtons');
+	}
+
+	Message.prototype.showMask = function() {
+		this.$mask = this.getMask();
+		this.$mask.show();
+		this.$mask.addClass('fade-enter fade-enter-active');
+		Message.maskAnimationUuid += 1;
+		var uuid = Message.maskAnimationUuid;
+		var context = this;
+		setTimeout(function() {
+			if (uuid != Message.maskAnimationUuid) return;
+			context.$mask.removeClass('fade-enter fade-enter-active fade-leave fade-leave-active');
+		}, 200);
+	}
+
+	Message.prototype.hideMask = function() {
+		this.$mask.addClass('fade-leave fade-leave-active');
+		var context = this;
+		Message.maskAnimationUuid += 1;
+		var uuid = Message.maskAnimationUuid;
+		setTimeout(function() {
+			if (uuid != Message.maskAnimationUuid) return;
+			context.$mask.removeClass('fade-leave fade-leave-active fade-enter fade-enter-active');
+			context.$mask.hide();
+		}, 200);
+	}
+
+	Message.prototype.getMask = function() {
+		var $modalMask = $('.modalMask');
+		if (!$modalMask.length) {
+			$modalMask = $(document.createElement('div'));
+			$modalMask.addClass('modalMask');
+			$(document.body).append($modalMask);
+		}
+		return $modalMask;
+	}
+
+ 	/**
+ 	 *  销毁实例
+ 	 */
+ 	Message.prototype.destroy = function() {
+ 		this.$dom.off('click', this.onClickHandler);
+ 		this.fadeout();
+ 		if (this.timeout) {
+ 			clearTimeout(this.timeout);
+ 		}
+ 		var context = this;
+ 		instList = instList.filter(function(el) {
+ 			return context !== el;
+ 		});
+ 	}
+
+	/**
+	 * 淡入
+	 */
+	Message.prototype.fadein = function() {
+		if (this.hasMask) {
+			this.showMask();
+		}
+		if (this.hasTimeout) {
+			this.timeout = setTimeout(this.destroy.bind(this), this.param.duration);
+		}
+		$(document.body).append(this.$dom);
+		this.$dom.addClass('message-in');
+		var context = this;
+		setTimeout(function() {
+			context.$dom.removeClass('message-in');
+		}, 200);
+	}
+
+ 	/**
+ 	 *  淡出
+ 	 */
+	Message.prototype.fadeout = function() {
+		if (this.hasMask) {
+			this.hideMask();
+		}
+		var context = this;
+		this.$dom.addClass('message-out');
+		setTimeout(function() {
+			context.$dom.removeClass('message-out');
+			context.$dom.remove();
+		}, 200);
+	}
+
+	/**
+	 * 点击事件
+	 */
+	Message.prototype.onClick = function(event) {
+		var $target = $(event.target);
+		if ($target.hasClass('message-btn')) {
+			var index = $target.data('index');
+			index = parseInt(index) || 0;
+			var fn = this.param.buttons[index].onClick;
+			if (fn && _.isFunction(fn)) {
+				fn();
+			}
+			this.destroy();
+		}
+	}
+
+	var instList = [];
+
+	$.message = function(param) {
+		if (!checkParam(param)) return;
+		instList.forEach(function(el) {
+			el.destroy();
+		});
+		var inst = new Message(param);
+		instList = [inst];
+	}
+
+	$.confirm = function(param) {
+		var messageParam = Object.assign({}, param, {
+			icon: 'icon icon-questioncircleo',
+			iconColor: '#3f91e8',
+			iconFontSize: 28
+		});
+		$.message(messageParam);
+	}
+
+	function checkParam(param) {
+		if (!param.title) {
+			console.log('消息框必须要有标题');
+			return false;
+		}
+		return true;
+	}
+
+})();
+
+
+/**
  * 单选框
  */
 (function defineRadio() {

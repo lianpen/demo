@@ -1495,6 +1495,44 @@ address {
   animation-play-state: running;
   pointer-events: none;
 }
+@keyframes messageIn {
+  0% {
+    opacity: .2;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: translate(0, -140px) scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: translate(0, 0) scaleY(1);
+  }
+}
+.message-in {
+  -webkit-animation: messageIn .2s;
+  animation: messageIn .2s;
+  animation-fill-mode: both;
+}
+@keyframes messageOut {
+  0% {
+    opacity: 1;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transform: translate(0, 200px);
+  }
+}
+.message-out {
+  -webkit-animation: messageOut .2s;
+  animation: messageOut .2s;
+  animation-fill-mode: both;
+}
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -1510,25 +1548,26 @@ address {
   padding: 0 10px;
   font-size: 12px;
   height: 32px;
+  line-height: 30px;
   border-radius: 4px;
   min-width: 70px;
   transition: all .2s;
   -webkit-transition: all .2s;
-  color: #4a7ec0;
+  color: #3c8fe8;
   background-color: #fff;
-  border-color: #4a7ec0;
+  border-color: #3c8fe8;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 .btn:hover {
-  border-color: #4a7ec0;
-  background-color: #4a7ec0;
+  border-color: #22a4f5;
+  background-color: #22a4f5;
   text-decoration: none;
 }
 .btn:hover {
-  background-color: #4a7ec0;
+  background-color: #3c8fe8;
   text-decoration: none;
   color: #fff;
 }
@@ -1551,13 +1590,13 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #4a7ec0;
+  color: #3c8fe8;
   background-color: #fff;
-  border-color: #4a7ec0;
+  border-color: #3c8fe8;
 }
 .btn-default:hover {
-  border-color: #4a7ec0;
-  background-color: #4a7ec0;
+  border-color: #22a4f5;
+  background-color: #22a4f5;
   text-decoration: none;
 }
 .btn-primary {
@@ -2255,7 +2294,6 @@ select[multiple].input-lg {
   transition: transform .2s;
   position: absolute;
   right: 7px;
-  top: 6px;
 }
 .dropdown.open button {
   border-color: #4a7ec0;
@@ -2876,4 +2914,82 @@ select[multiple].input-lg {
 }
 .calendar-picker td.calendar-selected-day .calendar-date:hover {
   background: #4a7ec0;
+}
+.comp-message {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comp-message .wrapper {
+  width: 340px;
+  pointer-events: all;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 5px rgba(126, 126, 126, 0.54);
+  -webkit-box-shadow: 0 1px 5px rgba(126, 126, 126, 0.54);
+  margin-top: -100px;
+}
+.comp-message .wrapper .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 38px 32px 20px;
+  font-size: 16px;
+  color: #333;
+}
+.comp-message .wrapper .title i {
+  margin-right: 12px;
+  font-size: 28px;
+}
+.comp-message .wrapper .content {
+  padding: 0 32px 36px;
+  color: #aaa;
+  font-size: 14px;
+  display: table;
+  margin: 0 auto;
+  line-height: 2;
+}
+.comp-message .wrapper .buttons {
+  border-top: 1px solid #e5e5e8;
+  display: flex;
+  height: 50px;
+  background: #f5f5f9;
+}
+.comp-message .wrapper .buttons a {
+  flex: 1;
+  height: 50px;
+  line-height: 50px;
+  color: #a1a1a1;
+  text-align: center;
+  font-size: 16px;
+}
+.comp-message .wrapper .buttons a:first-child {
+  border-right: 1px solid #e5e5e8;
+}
+.comp-message .wrapper .buttons a:hover {
+  color: #4e91d8;
+}
+.comp-message.noContent .title {
+  padding-bottom: 32px;
+}
+.comp-message.noContent .content {
+  display: none;
+}
+.comp-message.noButtons .title {
+  padding-bottom: 20px;
+}
+.comp-message.noButtons .buttons {
+  display: none;
+}
+.comp-message.noContent.noButtons .wrapper {
+  width: 210px;
+}
+.comp-message.noContent.noButtons .title {
+  padding-top: 20px;
 }

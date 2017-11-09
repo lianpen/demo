@@ -5,10 +5,34 @@
 .text-red {
 	color: #ff4141;
 }
-.qy-list-info .right a {
-    margin-left: 60px;
-    color: #666;
+.qy-list-info>.right {
+	margin-left: -30px;
+    margin-right: -30px;
 }
-.qy-list-info .right a:hover {
+.qy-list-info>.right a {
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #666;
+    position: relative;
+}
+.qy-list-info>.right a:hover {
 	color: #3c8fe8;
+}
+.qy-list-info>.right a:after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	right: -30px;
+	top: 0;
+	width: 1px;
+	height: 100%;
+	background-color: #ebebeb;
+}
+.qy-list-info {
+	overflow: hidden;
+}
+.modal-footer.text-center {
+	text-align: center;
+	padding-top: 24px;
+	padding-bottom: 24px;
 }

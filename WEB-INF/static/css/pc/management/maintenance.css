@@ -34,11 +34,6 @@
 	color: #a1a1a1;
 	margin: 0 8px;
 }
-.menu-group>li>a {
-	white-space: nowrap;
-    text-overflow: clip;
-    overflow: hidden;
-}
 .menu-group>li:hover .handle {
 	display: inline-block;
 }

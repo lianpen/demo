@@ -2,20 +2,7 @@
 .qy-list-info{
 	padding-left:20px;
 }
-.qy-twoDimension-header .go-back{
-	width:70px;
-	height:32px;
-	line-height:32px;
-	border:1px solid #3c8fe8;
-	border-radius:2px;
-	text-align:center;
-	margin-top: 20px;
-}
-.qy-twoDimension-header .go-back a{
-	display:block;
-	color:#3c8fe8;
-	font-size:12px;
-}
+
 .qy-list-action{
 	height:60px;
 	padding:0 20px;
@@ -43,8 +30,6 @@
 }
 .print-btn .btns .btn{
 	width:70px;
-	height:32px;
-	line-height:32px;
 	text-align:center;
 	padding:0;
 }
@@ -63,6 +48,7 @@
 	margin: 10px 20px;
 	margin-right:0px;
 	display: flex;
+	cursor:pointer;
 }
 .qy-list-table .print-status .checkbox{
 	margin-top:20px;

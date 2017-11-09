@@ -613,6 +613,8 @@
 .qy-edit-submit button:first-child {
 	margin-right: 24px;
 }
-
-
-	
+.menu-group>li>a {
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

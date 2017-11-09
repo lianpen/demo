@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="kiben" content="no-cache">
+	<title>ui</title>
+	<link rel="stylesheet" href="../WEB-INF/static/lib/bootstrap-qy-3.3.7/css/bootstrap.css" />
+	<link rel="stylesheet" href="../WEB-INF/static/lib/bootstrap-qy-3.3.7/css/iconfont.css" />
+	<link rel="stylesheet" href="../WEB-INF/static/css/pc/qy.css" />
+	
+	<script src="../WEB-INF/static/lib/jquery-3.2.1.js"></script>
+	<script src="../WEB-INF/static/lib/underscore.js"></script>
+	<script src="../WEB-INF/static/lib/bootstrap-3.3.7/js/bootstrap.js"></script>
+	<script src="../WEB-INF/static/js/pc/common.js"></script>
+	<script src="../WEB-INF/static/js/pc/plugin.js"></script>
+	<script src="../WEB-INF/static/js/pc/svgBundle.js"></script>
+</head>
+<body>
+	<style>
+		.messageDemo {
+			margin: 48px;
+		}
+		.messageDemo button {
+			margin-right: 24px;
+		}
+	</style>
+	<div class='messageDemo'>
+		<button class='btn btn0'>确认框</button>
+		<button class='btn btn1'>消息框</button>
+		<button class='btn btn2'>无内容</button>
+		<button class='btn btn3'>无底部(可以狂点)</button>
+		<button class='btn btn4'>无内容无底部</button>
+		<button class='btn btn5'>自定义底部</button>
+	</div>
+	<!--
+	<div class='comp-message hasContent hasButtons'>
+		<div class='wrapper'>
+			<div class="title">
+				<i class="icon icon-questioncircleo" style='color: #3f91e8'></i>
+				确认要给刘丽娜买礼物吗？
+			</div>
+			<div class='content'>
+				给刘丽娜买礼物以后你就会变穷了。
+			</div>
+			<div class='buttons'>
+				<a>确认</a>
+				<a>取消</a>
+			</div>
+		</div>
+	</div>
+	-->
+	<script>
+		$('.btn0').on('click', function() {
+			$.confirm({
+				title: '确认要修改刘丽娜吗？',
+				content: '修改了刘丽娜以后刘丽娜就会变得奇怪了。',
+				onOk: function() {
+					$.message({
+						title: '刘丽娜被改掉了额。',
+						hasButtons: false
+					})
+				}
+			});
+		});
+		$('.btn1').on('click', function() {
+			$.message({
+				title: '提交成功',
+				content: '棒棒哒',
+				iconColor: '#79c804',
+				iconFontSize: 24
+			});
+		});
+		$('.btn2').on('click', function() {
+			$.message({
+				title: '提交成功'
+			});
+		});
+		$('.btn3').on('click', function() {
+			$.message({
+				title: '提交成功',
+				content: '棒棒哒',
+				hasButtons: false
+			});
+		});
+		$('.btn4').on('click', function() {
+			$.message({
+				title: '提交成功',
+				hasButtons: false
+			});
+		});
+		$('.btn5').on('click', function() {
+			$.message({
+				title: '提交成功',
+				buttons: [{
+					text: '继续提交',
+					onClick: function() {
+						console.log('继续提交');
+					}
+				}, {
+					text: '重新编辑',
+					onClick: function() {
+						console.log('重新编辑');
+					}
+				}]
+			});
+		});
+	</script>
+</body>
+</html>
